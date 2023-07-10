@@ -1,0 +1,15 @@
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/example004.csproj.AssemblyReference.cache
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/example004.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/example004.AssemblyInfoInputs.cache
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/example004.AssemblyInfo.cs
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/example004.csproj.CoreCompileInputs.cache
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/bin/Debug/net6.0/example004
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/bin/Debug/net6.0/example004.deps.json
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/bin/Debug/net6.0/example004.runtimeconfig.json
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/bin/Debug/net6.0/example004.dll
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/bin/Debug/net6.0/example004.pdb
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/example004.dll
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/refint/example004.dll
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/example004.pdb
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/example004.genruntimeconfig.cache
+/Users/zinchenko/Dropbox/DROPBOX/GeekBrains/C#/example004/obj/Debug/net6.0/ref/example004.dll
