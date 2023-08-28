@@ -5,8 +5,6 @@
 // Программа должна предусматривать показ статистики (кол-во попыток и время, затраченное на игру), а также выход по нулю, 
 // если пользователю надоест угадывать
 
-using System;           // for Console.WriteLine, Console.ReadLine, Random, etc.
-using System.Linq;       // for Enumerable, Select, OrderBy, Contains, etc.
 using System.Diagnostics; // for Stopwatch
 
 
@@ -30,10 +28,30 @@ static void ExplainRules()
     DrawCow(message);
 }
 
-static int[] GenerateTarget()
+static int[] GenerateTarget(int size)
 {
+    int[] uniqueNumbers = new int[size];
+    int uniqueCount = 0;
     Random rand = new Random();
-    return Enumerable.Range(0, 10).OrderBy(x => rand.Next()).Take(4).ToArray();
+    while (uniqueCount < size)
+    {
+        int num = rand.Next(1, 10);
+        bool isUnique = true;
+        for (int i = 0; i < uniqueCount; i++)
+        {
+            if (uniqueNumbers[i] == num)
+            {
+                isUnique = false;
+                break;
+            }
+        }
+        if (isUnique)
+        {
+            uniqueNumbers[uniqueCount] = num;
+            uniqueCount++;
+        }
+    }
+    return uniqueNumbers;
 }
 
 static (int Bulls, int Cows) CalculateBullsAndCows(int[] target, int[] guess)
@@ -41,64 +59,75 @@ static (int Bulls, int Cows) CalculateBullsAndCows(int[] target, int[] guess)
     int bulls = 0, cows = 0; // Malvina and Buratino style :)
     for (int i = 0; i < 4; i++)
     {
-        if (guess[i] == target[i])
+        for (int j = 0; j <=i; j++)
         {
-            bulls++;
-        }
-        else if (target.Contains(guess[i]))
-        {
-            cows++;
+            if (target[i] == guess[j] && i == j)
+            {
+                bulls++;
+            }
+            else if (target[i] == guess[j] && i != j)
+            {
+                cows++;
+            }
         }
     }
     return (Bulls: bulls, Cows: cows);
 }
 
+static int[] ParseGuess(int number)
+{
+    int[] guess = new int[4];
+    for (int i = 3; i >= 0; i--)
+    {
+        guess[i] = number % 10;
+        number /= 10;
+    }
+    return guess;
+}
+
 Stopwatch stopwatch = new Stopwatch();
 int attempts = 0;
 
-Console.WriteLine("----------------------- Welcome to the 'Bulls and Cows' game! -----------------------");
-Console.WriteLine(" ");
-Console.WriteLine(" ");
+Console.WriteLine("----------------------- Welcome to the 'Bulls and Cows' game! -----------------------\n\n");
 ExplainRules();
 
-int[] target = GenerateTarget();
-
+int[] target = GenerateTarget(4);
 
 Console.WriteLine("To exit, enter 0.");
 stopwatch.Start();
 
 while (true)
 {
-    Console.Write("Enter your guess: ");
+    Console.Clear();
+    DrawCow("Enter your guess: ");
     string input = Console.ReadLine();
-
+    
     if (input == "0")
     {
-        stopwatch.Stop();
         Console.WriteLine($"Game over. You made {attempts} attempts.");
-        Console.WriteLine($"Time spent on the game: {Math.Ceiling(stopwatch.Elapsed.TotalSeconds)} seconds.");
         break;
     }
-
-    int[] guess = input.Select(ch => ch - '0').ToArray();
-    if (guess.Length != 4 || guess.Distinct().Count() != 4)
+    attempts++;
+    int.TryParse(input, out var number);
+    if (number < 1000 || number > 9999)
     {
-        Console.WriteLine("Invalid input. Try again.");
+        Console.WriteLine("Incorrect input\nPress any key to continue");
+        Console.ReadKey();
         continue;
     }
-
-    attempts++;
-
+    
+    int[] guess = ParseGuess(number);
+    
     var result = CalculateBullsAndCows(target, guess);
     Console.WriteLine($"Bulls: {result.Bulls}, Cows: {result.Cows}");
-    Console.WriteLine($"Time spent on the game: {Math.Ceiling(stopwatch.Elapsed.TotalSeconds)} seconds. You made {attempts} attempts.");
-    DrawCow($"Bulls: {result.Bulls}, Cows: {result.Cows}");
-
+    
     if (result.Bulls == 4)
     {
         stopwatch.Stop();
         Console.WriteLine($"Congratulations! You've guessed the number {string.Join("", target)} in {attempts} attempts.");
-        Console.WriteLine($"Time spent on the game: {Math.Ceiling(stopwatch.Elapsed.TotalSeconds)} seconds.");
         break;
     }
+    Console.WriteLine("Press any key to continue");
+    Console.ReadKey();
 }
+Console.WriteLine($"Time spent on the game: {Math.Ceiling(stopwatch.Elapsed.TotalSeconds)} seconds.");
