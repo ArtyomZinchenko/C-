@@ -11,7 +11,7 @@ int.TryParse(Console.ReadLine(), out int y);
 // Проверка на чередование белых и черных полей
 bool isWhite = (x + y) % 2 == 0;
 
-if (x <= 8 & y <= 8 & x != 0 & y != 0)
+if (x <= 8 && y <= 8 && x != 0 && y != 0)
 {
     if (isWhite)
     {

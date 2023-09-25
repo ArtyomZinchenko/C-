@@ -11,7 +11,7 @@
 // чтобы долететь из пункта А в пункт С. В случае невозможности преодолеть любое из расстояний — программа должна вывести 
 // сообщение о невозможности полета по введенному маршруту.
 
-double fuelTankCapacity = 300; // 
+const double fuelTankCapacity = 300; // 
 
 // Input distances and cargo weight
 Console.WriteLine("Enter the distance between point A and B (km):");
@@ -24,7 +24,7 @@ Console.WriteLine("Enter the weight of the cargo (kg):");
 double.TryParse(Console.ReadLine(), out double cargoWeight);
 
 // Determine fuel consumption based on cargo weight
-double fuelPerKm;
+double fuelPerKm = 0;
 if (cargoWeight <= 500)
     fuelPerKm = 1;
 else if (cargoWeight <= 1000)

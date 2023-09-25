@@ -39,13 +39,13 @@ else if (choice == 4)
     else
     {
         Console.WriteLine("Can't divide by 0!!");
-        return;
+       
     }
 }
 else
 {
     Console.WriteLine("Wrong selection.");
-    return;
+    
 }
 
 Console.WriteLine($"Result: {result}");

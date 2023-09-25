@@ -2,13 +2,6 @@
 
 Console.WriteLine("Please, instert number of days: ");
 
-bool flag = int.TryParse(Console.ReadLine(), out int totalDays);
+int.TryParse(Console.ReadLine(), out int totalDays);
 
-// int totalDays = int.Parse(Console.ReadLine());
-
-int weeks = totalDays / 7; // количество полных недель
-
-int remainingDays = totalDays % 7; // оставшиеся дни
-
-Console.WriteLine($"Полных недель: {weeks}");
-Console.WriteLine($"Оставшихся дней: {remainingDays}");
+Console.WriteLine($"Полных недель: {totalDays / 7} Оставшихся дней: {totalDays % 7}");
