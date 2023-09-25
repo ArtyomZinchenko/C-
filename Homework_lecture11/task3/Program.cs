@@ -8,17 +8,17 @@ namespace PointNamespace
     {
         static void Main(string[] args)
         {
-            Point point1 = new Point();
+            Console.WriteLine("Enter x coordinate: ");
+            int.TryParse(Console.ReadLine(), out var x);
+            Console.WriteLine("Enter y coordinate: ");
+            int.TryParse(Console.ReadLine(), out var y);
+            Console.WriteLine("Enter z coordinate: ");
+            int.TryParse(Console.ReadLine(), out var z);
+            
+            Point point = new Point(x,y,z);
+            point.OutputData();
 
-            Console.WriteLine("Enter data for point 1:");
-            point1.InputData();
-
-            Console.WriteLine("\nData for point 1:");
-            point1.OutputData();
-            // Point point2 = new Point{ X = 1, Y = 2, Z = 3 };
-            Point point2 = new Point(point1.X, point1.Y, point1.Z);
-
-            Console.WriteLine("\nData for point 2:");
+            Point point2 = new();
             point2.OutputData();
         }
     }
